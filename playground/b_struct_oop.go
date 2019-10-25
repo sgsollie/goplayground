@@ -36,4 +36,16 @@ func main() {
 			fmt.Printf("\t%v: %v\n", j, w)
 		}
 	}
+
+	// Doing the same but with a map with a key of last name, instead of SLICE of TYPE person.
+	m := map[string]person{
+		p1.last: p1,
+		p2.last: p2,
+	}
+
+	// Just ranging over the values for the map, not pulling out icecream this time though
+	for k, l := range m {
+		fmt.Println(k, ": ", l)
+	}
+
 }
