@@ -7,9 +7,6 @@ import (
 	"math"
 )
 
-// we obviously know pi, and that it won't change:
-const Pi float64 = 3.14159265358979323846264338327950288419716939937510582097494459
-
 //user defined types for Square and circle
 type square struct {
 	length float64
@@ -33,8 +30,8 @@ func (r square) Area() float64 {
 
 //Area method for circle type
 func (r circle) Area() float64 {
-	//area := Pi * r.radius * r.radius
-	area := Pi * math.Pow(r.radius, 2)
+	//area := math.Pi * r.radius * r.radius
+	area := math.Pi * math.Pow(r.radius, 2)
 	return area
 }
 
