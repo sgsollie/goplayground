@@ -9,7 +9,7 @@ var z int = 0
 //foo returns memory address of x (& operator, or rather a POINTER to x)
 func foo() *int {
 	x := 0
-	return &x
+	return &x  //&x is a pointer
 }
 
 func main() {
