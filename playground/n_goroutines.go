@@ -6,6 +6,7 @@ import (
 	"sync"
 )
 
+// playing with go routines. The below code has no locking on the counter variable, so we get a race condition.
 func main() {
 	var wg sync.WaitGroup
 	for i := 0; i <= 100; i++ {
