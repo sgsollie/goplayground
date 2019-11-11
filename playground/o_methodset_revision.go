@@ -23,7 +23,7 @@ func (r *person) speak() {
 
 //saySomething() func, implementing the human interface (and as a result, pointer to a value of type person)
 func saySomething(v human) {
-	human.speak(v)
+	v.speak()
 }
 
 func main() {
@@ -37,5 +37,5 @@ func main() {
 	saySomething(&p1)
 
 	//Doesnt' Work, comment the below line out to run this program
-	saySomething(p1)
+	//saySomething(p1)
 }
