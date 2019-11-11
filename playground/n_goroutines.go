@@ -2,21 +2,26 @@ package main
 
 import (
 	"fmt"
-	"runtime"
 	"sync"
 )
 
-// playing with go routines. The below code has no locking on the counter variable, so we get a race condition.
+// playing with go routines. We are using a mutex to lock the counter variable below. This prevents a race condition
 func main() {
+	var mu sync.Mutex
 	var wg sync.WaitGroup
-	for i := 0; i <= 100; i++ {
-		wg.Add(1)
-		go func() {
-			fmt.Println("Goroutine", i)
-			fmt.Println(runtime.NumGoroutine())
-			wg.Done()
+	counter := 0
+	wg.Add(100)
 
+	for i := 0; i < 100; i++ {
+		go func() {
+			mu.Lock()
+			counter++
+			fmt.Println("Counter: ", counter)
+			mu.Unlock()
+			wg.Done()
 		}()
+
 	}
 	wg.Wait()
+	fmt.Println("end value:", counter)
 }
