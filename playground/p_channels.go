@@ -11,7 +11,14 @@ func main() {
 	fmt.Println("about to exit")
 }
 
-//generate numbers on channel - returns c as a receieve from channel
+// func gen() generate numbers on channel and returns c as a receieve from channel.
+//CHANNELS BLOCK! So as this function (within its own goroutine) SENDS a value to channel c <-
+//.. another function has to pick up (RECEIVE) the values over each iteraton in the loop,
+// this is what the receive() function is doing. So as each iteration happens:
+// receive picks up the val, prints it, which unblocks the chan,
+// allowing the iteration to continue until i reaches 100
+// when i reaches 100, the channel is closed with close().
+
 //closes c after counting to 100
 func gen() <-chan int {
 	c := make(chan int)
